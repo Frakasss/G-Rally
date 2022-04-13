@@ -63,6 +63,10 @@ void game_manageGlobalCounter(){
         break;
         
      //####################################  
+     case GAMECHECK:
+        break;
+                
+     //####################################  
      case GAMEOVER:
         break;     
         
@@ -94,14 +98,52 @@ void game_manageGlobalCounter(){
 //###################################################
 //###################################################
 void game_initMapInfos(){
-  maps[0].x=12;   maps[0].y=112;  maps[0].pos=4;  maps[0].bestScore=10; maps[0].title="The Training";
-  maps[1].x=74;   maps[1].y=10;   maps[1].pos=4;  maps[1].bestScore=10; maps[1].title="Cut the Curve";
-  maps[2].x=10;   maps[2].y=120;  maps[2].pos=0;  maps[2].bestScore=10; maps[2].title="Turn around";
-  maps[3].x=156;  maps[3].y=10;   maps[3].pos=10; maps[3].bestScore=10; maps[3].title="The River";
-  maps[4].x=80;   maps[4].y=10;   maps[4].pos=4;  maps[4].bestScore=10; maps[4].title="Shortcut";
-  maps[5].x=74;   maps[5].y=10;   maps[5].pos=4;  maps[5].bestScore=10; maps[5].title="Paris Dakar";
-  maps[6].x=-20;    maps[6].y=64;   maps[6].pos=4;  maps[6].bestScore=10; maps[6].title="Driving License";
+  for(int i=0;i<amountOfMap;i++){
+    if(i==0)  {maps[i].x=8;    maps[i].y=14;   maps[i].pos=4;  maps[i].bestScore=7;  maps[i].palette=0; maps[i].isNight=false; maps[i].title="Driving License - 1/3";}
+    if(i==1)  {maps[i].x=8;    maps[i].y=32;   maps[i].pos=4;  maps[i].bestScore=9;  maps[i].palette=0; maps[i].isNight=false; maps[i].title="Driving License - 2/3";}
+    if(i==2)  {maps[i].x=8;    maps[i].y=58;   maps[i].pos=4;  maps[i].bestScore=9;  maps[i].palette=0; maps[i].isNight=false; maps[i].title="Driving License - 3/3";}
+    if(i==3)  {maps[i].x=12;   maps[i].y=112;  maps[i].pos=4;  maps[i].bestScore=26; maps[i].palette=0; maps[i].isNight=false; maps[i].title="The Training";}
+    if(i==4)  {maps[i].x=74;   maps[i].y=10;   maps[i].pos=4;  maps[i].bestScore=24; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Cut the Curve";}
+    if(i==5)  {maps[i].x=10;   maps[i].y=120;  maps[i].pos=0;  maps[i].bestScore=35; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Turn around";}
+    if(i==6)  {maps[i].x=156;  maps[i].y=10;   maps[i].pos=10; maps[i].bestScore=27; maps[i].palette=0; maps[i].isNight=false; maps[i].title="The River";}
+    if(i==7)  {maps[i].x=80;   maps[i].y=10;   maps[i].pos=4;  maps[i].bestScore=28; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Shortcut";}
+    if(i==8)  {maps[i].x=75;   maps[i].y=21;   maps[i].pos=4;  maps[i].bestScore=36; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Golf";}
 
+    //mountain
+    if(i==9)   {maps[i].x=6;    maps[i].y=60;   maps[i].pos=0;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Mountain sickness";}
+    if(i==10)  {maps[i].x=108;  maps[i].y=94;   maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Santa";}
+    if(i==11)  {maps[i].x=152;  maps[i].y=72;   maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Lost in snow";}
+    if(i==12)  {maps[i].x=30;   maps[i].y=6;    maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Ski Station";}
+
+    //Jungle
+    if(i==13)  {maps[i].x=140;  maps[i].y=100;  maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Welcome to Jungle";}
+    if(i==14)  {maps[i].x=92;   maps[i].y=82;   maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Green hell";}
+    if(i==15)  {maps[i].x=56;   maps[i].y=118;  maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="The Village";}
+    if(i==16)  {maps[i].x=26;   maps[i].y=106;  maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Floods";}
+
+    //Desert    
+    if(i==17)  {maps[i].x=76;   maps[i].y=10;   maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Paris - Dakar";}
+    if(i==18)  {maps[i].x=108;  maps[i].y=118;  maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Choose your way";}
+    if(i==19)  {maps[i].x=96;   maps[i].y=84;   maps[i].pos=6;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Pyramids";}
+    if(i==20)  {maps[i].x=40;   maps[i].y=118;  maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Sphynx";}
+
+    //Island
+    if(i==21)  {maps[i].x=108;  maps[i].y=10;   maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Skull Island";}
+    if(i==22)  {maps[i].x=100;  maps[i].y=14;   maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Pirats!";}
+    if(i==23)  {maps[i].x=94;   maps[i].y=108;  maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Lost island";}
+    if(i==24)  {maps[i].x=76;   maps[i].y=8;    maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Island Drift";}
+
+    //Volcano
+    if(i==25)  {maps[i].x=6;    maps[i].y=116;  maps[i].pos=0;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Volcano";}
+    if(i==26)  {maps[i].x=72;   maps[i].y=60;   maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Devil";}
+    if(i==27)  {maps[i].x=88;   maps[i].y=120;  maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Labyrinth";}
+    if(i==28)  {maps[i].x=70;   maps[i].y=118;  maps[i].pos=10; maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Balrog";}
+
+    //WTF
+    if(i==29)  {maps[i].x=100;  maps[i].y=114;  maps[i].pos=4;  maps[i].bestScore=10; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Rainbow!!";}
+    if(i==30)  {maps[i].x=45;   maps[i].y=116;  maps[i].pos=10; maps[i].bestScore=33; maps[i].palette=0; maps[i].isNight=false; maps[i].title="Star Wars!!";}
+
+  }
 }
 
 
@@ -113,14 +155,48 @@ void game_initCarPosition(){
   car01.pos=maps[mapSelected].pos;
 }
 
+void game_setPalette(int paletteSelected){
+  if(paletteSelected==0){gb.display.setPalette(PALETTE);}
+  if(paletteSelected==1){gb.display.setPalette(PALETTENIGHT);}
+}
+
+void game_resetPalette(){
+  outputScreen_clear();
+  gb.display.setPalette(PALETTE);
+}
+
 void game_initActiveColors(){
   if(mapSelected==0){  Image Map000(Map000Data);  gb.display.drawImage(0,0,Map000,0,0,10,1);} 
-  if(mapSelected==1){  Image Map001(Map001Data);  gb.display.drawImage(0,0,Map001,0,0,10,1);} 
-  if(mapSelected==2){  Image Map002(Map002Data);  gb.display.drawImage(0,0,Map002,0,0,10,1);} 
-  if(mapSelected==3){  Image Map003(Map003Data);  gb.display.drawImage(0,0,Map003,0,0,10,1);} 
-  if(mapSelected==4){  Image Map004(Map004Data);  gb.display.drawImage(0,0,Map004,0,0,10,1);} 
-  if(mapSelected==5){  Image Map005(Map005Data);  gb.display.drawImage(0,0,Map005,0,0,10,1);}
-  if(mapSelected==6){  Image Map006(Map006Data);  gb.display.drawImage(0,0,Map006,0,0,10,1);}
+  if(mapSelected==1){  Image Map000(Map000Data);  gb.display.drawImage(0,0,Map000,0,0,10,1);} 
+  if(mapSelected==2){  Image Map000(Map000Data);  gb.display.drawImage(0,0,Map000,0,0,10,1);} 
+  if(mapSelected==3){  Image Map001(Map001Data);  gb.display.drawImage(0,0,Map001,0,0,10,1);} 
+  if(mapSelected==4){  Image Map002(Map002Data);  gb.display.drawImage(0,0,Map002,0,0,10,1);} 
+  if(mapSelected==5){  Image Map003(Map003Data);  gb.display.drawImage(0,0,Map003,0,0,10,1);} 
+  if(mapSelected==6){  Image Map004(Map004Data);  gb.display.drawImage(0,0,Map004,0,0,10,1);} 
+  if(mapSelected==7){  Image Map005(Map005Data);  gb.display.drawImage(0,0,Map005,0,0,10,1);}
+  if(mapSelected==8){  Image Map006(Map006Data);  gb.display.drawImage(0,0,Map006,0,0,10,1);}
+  if(mapSelected==9){  Image Map007(Map007Data);  gb.display.drawImage(0,0,Map007,0,0,10,1);}
+  if(mapSelected==10){ Image Map008(Map008Data);  gb.display.drawImage(0,0,Map008,0,0,10,1);}
+  if(mapSelected==11){ Image Map009(Map009Data);  gb.display.drawImage(0,0,Map009,0,0,10,1);} 
+  if(mapSelected==12){ Image Map010(Map010Data);  gb.display.drawImage(0,0,Map010,0,0,10,1);} 
+  if(mapSelected==13){ Image Map011(Map011Data);  gb.display.drawImage(0,0,Map011,0,0,10,1);} 
+  if(mapSelected==14){ Image Map012(Map012Data);  gb.display.drawImage(0,0,Map012,0,0,10,1);} 
+  if(mapSelected==15){ Image Map013(Map013Data);  gb.display.drawImage(0,0,Map013,0,0,10,1);} 
+  if(mapSelected==16){ Image Map014(Map014Data);  gb.display.drawImage(0,0,Map014,0,0,10,1);} 
+  if(mapSelected==17){ Image Map015(Map015Data);  gb.display.drawImage(0,0,Map015,0,0,10,1);} 
+  if(mapSelected==18){ Image Map016(Map016Data);  gb.display.drawImage(0,0,Map016,0,0,10,1);} 
+  if(mapSelected==19){ Image Map017(Map017Data);  gb.display.drawImage(0,0,Map017,0,0,10,1);} 
+  if(mapSelected==20){ Image Map018(Map018Data);  gb.display.drawImage(0,0,Map018,0,0,10,1);} 
+  if(mapSelected==21){ Image Map019(Map019Data);  gb.display.drawImage(0,0,Map019,0,0,10,1);} 
+  if(mapSelected==22){ Image Map020(Map020Data);  gb.display.drawImage(0,0,Map020,0,0,10,1);} 
+  if(mapSelected==23){ Image Map021(Map021Data);  gb.display.drawImage(0,0,Map021,0,0,10,1);} 
+  if(mapSelected==24){ Image Map022(Map022Data);  gb.display.drawImage(0,0,Map022,0,0,10,1);} 
+  if(mapSelected==25){ Image Map023(Map023Data);  gb.display.drawImage(0,0,Map023,0,0,10,1);} 
+  if(mapSelected==26){ Image Map024(Map024Data);  gb.display.drawImage(0,0,Map024,0,0,10,1);} 
+  if(mapSelected==27){ Image Map025(Map025Data);  gb.display.drawImage(0,0,Map025,0,0,10,1);} 
+  if(mapSelected==28){ Image Map026(Map026Data);  gb.display.drawImage(0,0,Map026,0,0,10,1);} 
+  if(mapSelected==29){ Image Map027(Map027Data);  gb.display.drawImage(0,0,Map027,0,0,10,1);} 
+  if(mapSelected==30){ Image Map028(Map028Data);  gb.display.drawImage(0,0,Map028,0,0,10,1);}  
   road = gb.display.getPixelColor(0,0);
   speedKiller1 = gb.display.getPixelColor(1,0);
   speedKiller2 = gb.display.getPixelColor(2,0);

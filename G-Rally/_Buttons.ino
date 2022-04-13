@@ -63,6 +63,7 @@ void button_check(int typeCheck){
 
           case 1:
             game.gameStatus=GAME;
+            game_setPalette(maps[mapSelected].palette);
             game_initActiveColors();
             game_initCarPosition();
             game_resetReplay();
@@ -113,13 +114,7 @@ void button_check(int typeCheck){
         game_setCarPosition();
         
         if(gb.buttons.pressed(BUTTON_A)){
-          car01.x=car01.x+car01.previousX+cur.x;
-          car01.y=car01.y+car01.previousY+cur.y;
-          car01.previousX=car01.previousX+cur.x;
-          car01.previousY=car01.previousY+cur.y;
-
-          game_resetCursor();
-          game_recordReplay();
+          game.gameStatus=GAMECHECK;
         }
 
         if(gb.buttons.repeat(BUTTON_B,0)){
@@ -131,6 +126,12 @@ void button_check(int typeCheck){
         }
      break;
 
+     //#################################
+     //########### GAMECHECK ###########
+     //#################################
+     case GAMECHECK:
+     break;
+
      //####################################  
      case GAMEOVER:
       if(gb.buttons.pressed(BUTTON_A)){
@@ -139,7 +140,7 @@ void button_check(int typeCheck){
         game_resetReplay();
         game_resetCursor();
         if(game.menuPauseOption==0){game.gameStatus = GAME;}
-        if(game.menuPauseOption==1){game.gameStatus = MENU;}
+        if(game.menuPauseOption==1){game.gameStatus = MENU; game_resetPalette();}
         game.menuPauseOption=0;
       }else{
         if(gb.buttons.pressed(BUTTON_UP)){    
@@ -171,6 +172,7 @@ void button_check(int typeCheck){
         }
         if(game.menuPauseOption==2){
           game.gameStatus = MENU;
+          game_resetPalette();
         }
         game.menuPauseOption=0;
       }else{
@@ -198,10 +200,11 @@ void button_check(int typeCheck){
           game_initCarPosition();
           game_resetReplay();
           game_resetCursor();
-          if(game.menuPauseOption==0){game.gameStatus = GAME;}
+          game.gameStatus = GAME;
         }
         if(game.menuPauseOption==2){
           game.gameStatus = MENU;
+          game_resetPalette();
         }
         game.menuPauseOption=0;
       }else{

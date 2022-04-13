@@ -1,5 +1,6 @@
 #include <Gamebuino-Meta.h>
 #include "assets/indexed.h"
+#include "assets/maps.h"
 
 #define GAMEMAKERS 0
 #define TITLESCREEN 1
@@ -7,9 +8,10 @@
 #define MAPSELECTION 3
 #define CARSELECTION 4
 #define GAME 5
-#define REPLAY 6
-#define GAMEOVER 7
-#define WINNER 8
+#define GAMECHECK 6
+#define REPLAY 7
+#define GAMEOVER 8
+#define WINNER 9
 
 #define CREDITS 98
 #define MENUPAUSE 99
@@ -57,7 +59,7 @@ typedef struct{
   int16_t pos;
 }ReplayInfo;
 ReplayInfo replay[300];
-int16_t replayCounter;
+int replayCounter;
 
 typedef struct{
   int16_t x;
@@ -65,10 +67,12 @@ typedef struct{
   int16_t pos;
   String title;
   int16_t bestScore;
+  int16_t palette;
+  bool isNight;
 }MapInfo;
 MapInfo maps[100];
-int16_t mapSelected=0;
-int16_t amountOfMap=7;  //!\\ //!\\//!\\//!\\//!\\//!\\
+int mapSelected=0;
+int amountOfMap=31;  //!\\ //!\\//!\\//!\\//!\\//!\\
 
 typedef struct {
   int8_t weapon;
@@ -159,12 +163,7 @@ void loop(){
          case GAME:
             outputScreen_clear();
             outputScreen_map();
-            game_checkSpeedKiller();
-            game_checkHandlingKiller();
-            game_checkInstantDeath();
-            game_checkOutOfScreen();
-            game_checkCheckpoint();
-            game_checkFinish();
+            outputScreen_night();
             outputScreen_grid();
             outputScreen_trajectory();
             outputScreen_car();
@@ -172,6 +171,29 @@ void loop(){
             button_check(GAME);
             break;
 
+         //####################################  
+         case GAMECHECK:
+            game.gameStatus=GAME;
+            car01.x=car01.x+car01.previousX+cur.x;
+            car01.y=car01.y+car01.previousY+cur.y;
+            car01.previousX=car01.previousX+cur.x;
+            car01.previousY=car01.previousY+cur.y;
+    
+            game_resetCursor();
+            game_recordReplay();
+         
+            outputScreen_clear();
+            outputScreen_map();
+            game_checkSpeedKiller();
+            game_checkHandlingKiller();
+            game_checkInstantDeath();
+            game_checkOutOfScreen();
+            game_checkCheckpoint();
+            game_checkFinish();
+            outputScreen_night();
+            outputScreen_car();
+            break;
+            
          //####################################  
          case GAMEOVER:
             outputScreen_clear();
